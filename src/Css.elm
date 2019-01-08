@@ -1,509 +1,114 @@
-module Css
-    exposing
-        ( BoxShadowConfig
-        , CalcOperation
-        , Color
-        , Style
-        , Supported
-        , Value
-        , absolute
-        , active
-        , after
-        , alias
-        , alignItems
-        , alignSelf
-        , all
-        , allPetiteCaps
-        , allScroll
-        , allSmallCaps
-        , all_
-        , arabicIndic
-        , arcs
-        , armenian
-        , auto
-        , backgroundAttachment
-        , backgroundAttachments
-        , backgroundBlendMode
-        , backgroundBlendModes
-        , backgroundClip
-        , backgroundClips
-        , backgroundColor
-        , backgroundImage
-        , backgroundImages
-        , backgroundOrigin
-        , backgroundOrigins
-        , backgroundPosition
-        , backgroundPosition2
-        , backgroundPosition4
-        , backgroundRepeat
-        , backgroundRepeat2
-        , backgroundSize
-        , backgroundSize2
-        , balance
-        , balanceAll
-        , baseline
-        , batch
-        , before
-        , bengali
-        , bevel
-        , block
-        , bold
-        , bolder
-        , border
-        , border2
-        , border3
-        , borderBottom
-        , borderBottom2
-        , borderBottom3
-        , borderBottomColor
-        , borderBottomLeftRadius
-        , borderBottomLeftRadius2
-        , borderBottomRightRadius
-        , borderBottomRightRadius2
-        , borderBottomStyle
-        , borderBottomWidth
-        , borderBox
-        , borderCollapse
-        , borderColor
-        , borderColor2
-        , borderColor3
-        , borderColor4
-        , borderImageOutset
-        , borderImageOutset2
-        , borderImageOutset3
-        , borderImageOutset4
-        , borderImageWidth
-        , borderImageWidth2
-        , borderImageWidth3
-        , borderImageWidth4
-        , borderLeft
-        , borderLeft2
-        , borderLeft3
-        , borderLeftColor
-        , borderLeftStyle
-        , borderLeftWidth
-        , borderRadius
-        , borderRadius2
-        , borderRadius3
-        , borderRadius4
-        , borderRight
-        , borderRight2
-        , borderRight3
-        , borderRightColor
-        , borderRightStyle
-        , borderRightWidth
-        , borderSpacing
-        , borderSpacing2
-        , borderStyle
-        , borderStyle2
-        , borderStyle3
-        , borderStyle4
-        , borderTop
-        , borderTop2
-        , borderTop3
-        , borderTopColor
-        , borderTopLeftRadius
-        , borderTopLeftRadius2
-        , borderTopRightRadius
-        , borderTopRightRadius2
-        , borderTopStyle
-        , borderTopWidth
-        , borderWidth
-        , borderWidth2
-        , borderWidth3
-        , borderWidth4
-        , both
-        , bottom
-        , bottom_
-        , boundingBox
-        , boxShadow
-        , boxSizing
-        , breakAll
-        , breakWord
-        , butt
-        , calc
-        , capitalize
-        , captionSide
-        , cell
-        , center
-        , ch
-        , cjkEarthlyBranch
-        , cjkHeavenlyStem
-        , clear
-        , clone
-        , cm
-        , colResize
-        , collapse
-        , color
-        , colorBurn
-        , colorDodge
-        , color_
-        , columnCount
-        , columnFill
-        , columnGap
-        , columnRule
-        , columnRule2
-        , columnRule3
-        , columnRuleColor
-        , columnRuleStyle
-        , columnRuleWidth
-        , columnSpan
-        , columnWidth
-        , columns
-        , columns2
-        , commonLigatures
-        , compress
-        , contain
-        , contentBox
-        , contextMenu
-        , contextual
-        , copy
-        , cover
-        , crop
-        , crosshair
-        , cursive
-        , cursor
-        , darken
-        , dashed
-        , dashes
-        , default
-        , defaultBoxShadow
-        , deg
-        , devanagari
-        , diagonalFractions
-        , difference
-        , direction
-        , discretionaryLigatures
-        , display
-        , displayFlex
-        , dividedBy
-        , dotted
-        , double
-        , eResize
-        , em
-        , emptyCells
-        , end
-        , ewResize
-        , ex
-        , exclusion
-        , fantasy
-        , fill
-        , fillBox
-        , firstBaseline
-        , fixed
-        , flexEnd
-        , flexStart
-        , float
-        , fontFamilies
-        , fontFamily
-        , fontSize
-        , fontStyle
-        , fontVariantCaps
-        , fontVariantLigatures
-        , fontVariantNumeric
-        , fontVariantNumeric4
-        , fontWeight
-        , fullWidth
-        , gaps
-        , geometricPrecision
-        , georgian
-        , grab
-        , grabbing
-        , grad
-        , grid
-        , groove
-        , gujarati
-        , gurmukhi
-        , hardLight
-        , help
-        , hex
-        , hidden
-        , hide
-        , historicalLigatures
-        , hsl
-        , hsla
-        , hue
-        , inches
-        , inherit
-        , initial
-        , inline
-        , inlineBlock
-        , inlineEnd
-        , inlineFlex
-        , inlineStart
-        , inset
-        , int
-        , italic
-        , justify
-        , kannada
-        , keepAll
-        , khmer
-        , lao
-        , large
-        , larger
-        , lastBaseline
-        , left
-        , left_
-        , lighten
-        , lighter
-        , lineThrough
-        , linearGradient
-        , liningNums
-        , listStyle
-        , listStyle2
-        , listStyle3
-        , local
-        , lowercase
-        , ltr
-        , luminosity
-        , malayalam
-        , margin
-        , margin2
-        , margin3
-        , margin4
-        , marginBottom
-        , marginLeft
-        , marginRight
-        , marginTop
-        , matchParent
-        , matrix
-        , matrix3d
-        , medium
-        , middle
-        , minus
-        , miter
-        , mixed
-        , mm
-        , monospace
-        , move
-        , multiply
-        , myanmar
-        , nResize
-        , neResize
-        , neswResize
-        , noCommonLigatures
-        , noContextual
-        , noDiscretionaryLigatures
-        , noDrop
-        , noHistoricalLigatures
-        , noRepeat
-        , none
-        , normal
-        , notAllowed
-        , nowrap
-        , nsResize
-        , num
-        , nwResize
-        , nwseResize
-        , oblique
-        , oldstyleNums
-        , opacity
-        , optimizeLegibility
-        , optimizeSpeed
-        , order
-        , ordinal
-        , oriya
-        , outset
-        , overflow
-        , overflowWrap
-        , overflowX
-        , overflowY
-        , overlay
-        , overline
-        , padding
-        , padding2
-        , padding3
-        , padding4
-        , paddingBottom
-        , paddingBox
-        , paddingLeft
-        , paddingRight
-        , paddingTop
-        , pc
-        , pct
-        , perspective
-        , petiteCaps
-        , plus
-        , pointer
-        , position
-        , pre
-        , preLine
-        , preWrap
-        , progress
-        , property
-        , proportionalNums
-        , pseudoClass
-        , pseudoElement
-        , pt
-        , px
-        , rad
-        , relative
-        , rem
-        , repeat
-        , repeatX
-        , repeatY
-        , revert
-        , rgb
-        , rgba
-        , ridge
-        , right
-        , right_
-        , rotate
-        , rotate3d
-        , rotateX
-        , rotateY
-        , rotateZ
-        , round
-        , rowResize
-        , rtl
-        , sResize
-        , safeCenter
-        , sansSerif
-        , saturation
-        , scale
-        , scale2
-        , scale3d
-        , scaleX
-        , scaleY
-        , scaleZ
-        , screen
-        , scroll
-        , seResize
-        , selfEnd
-        , selfStart
-        , separate
-        , serif
-        , show
-        , sideways
-        , skew
-        , skew2
-        , skewX
-        , skewY
-        , slashedZero
-        , slice
-        , small
-        , smallCaps
-        , smaller
-        , softLight
-        , solid
-        , space
-        , square
-        , stackedFractions
-        , start
-        , static
-        , sticky
-        , stop
-        , stop2
-        , stretch
-        , strokeAlign
-        , strokeBox
-        , strokeBreak
-        , strokeColor
-        , strokeDashCorner
-        , strokeDashJustify
-        , strokeDasharray
-        , strokeDashoffset
-        , strokeImage
-        , strokeLinecap
-        , strokeLinejoin
-        , strokeLinejoin2
-        , strokeMiterlimit
-        , strokeOpacity
-        , strokeOrigin
-        , strokePosition
-        , strokePosition2
-        , strokePosition4
-        , strokeRepeat
-        , strokeRepeat2
-        , strokeSize
-        , strokeSize2
-        , strokeWidth
-        , stupid
-        , sub
-        , super
-        , swResize
-        , systemUi
-        , table
-        , tableCaption
-        , tableCell
-        , tableColumn
-        , tableColumnGroup
-        , tableFooterGroup
-        , tableHeaderGroup
-        , tableLayout
-        , tableRow
-        , tableRowGroup
-        , tabularNums
-        , telugu
-        , text
-        , textAlign
-        , textBottom
-        , textDecoration
-        , textDecoration2
-        , textDecoration3
-        , textDecorationColor
-        , textDecorationLine
-        , textDecorationLine2
-        , textDecorationLine3
-        , textDecorationStyle
-        , textOrientation
-        , textRendering
-        , textTop
-        , textTransform
-        , text_
-        , thai
-        , thick
-        , thin
-        , times
-        , titlingCaps
-        , toBottom
-        , toBottomLeft
-        , toBottomRight
-        , toLeft
-        , toRight
-        , toTop
-        , toTopLeft
-        , toTopRight
-        , top
-        , top_
-        , transform
-        , translate
-        , translate2
-        , translate3d
-        , translateX
-        , translateY
-        , translateZ
-        , turn
-        , underline
-        , unicase
-        , unsafeCenter
-        , unset
-        , uppercase
-        , upright
-        , url
-        , verticalAlign
-        , verticalText
-        , vh
-        , visibility
-        , visible
-        , vmax
-        , vmin
-        , vw
-        , wResize
-        , wait
-        , wavy
-        , whiteSpace
-        , wordBreak
-        , xLarge
-        , xSmall
-        , xxLarge
-        , xxSmall
-        , zIndex
-        , zero
-        , zoom
-        , zoomIn
-        , zoomOut
-        )
+module Css exposing
+    ( Value, Supported
+    , Style, batch
+    , property
+    , unset, initial, inherit
+    , all, revert
+    , zero, px, em, ex, ch, rem, vh, vw, vmin, vmax, mm, cm, inches, pt, pc, pct, num, int
+    , calc, CalcOperation, minus, plus, times, dividedBy
+    , Color, color, backgroundColor, hex, rgb, rgba, hsl, hsla
+    , pseudoClass, active
+    , pseudoElement, before, after
+    , backgroundAttachment, backgroundAttachments, scroll, fixed, local
+    , backgroundBlendMode, backgroundBlendModes, multiply, screen, overlay, darken, lighten, colorDodge, colorBurn, hardLight, softLight, difference, exclusion, hue, saturation, color_, luminosity
+    , backgroundClip, backgroundClips, backgroundOrigin, backgroundOrigins, paddingBox, text_
+    , backgroundImage, backgroundImages, backgroundPosition, backgroundPosition2, backgroundPosition4, backgroundRepeat, backgroundRepeat2, backgroundSize, backgroundSize2
+    , linearGradient, stop, stop2, toBottom, toBottomLeft, toBottomRight, toLeft, toRight, toTop, toTopLeft, toTopRight
+    , repeat, noRepeat, repeatX, repeatY, space, round
+    , cover, contain
+    , BoxShadowConfig, boxShadow, defaultBoxShadow
+    , border, border2, border3
+    , borderTop, borderTop2, borderTop3
+    , borderRight, borderRight2, borderRight3
+    , borderBottom, borderBottom2, borderBottom3
+    , borderLeft, borderLeft2, borderLeft3
+    , borderWidth, borderWidth2, borderWidth3, borderWidth4, borderTopWidth, borderRightWidth, borderBottomWidth, borderLeftWidth
+    , thin, thick
+    , borderStyle, borderStyle2, borderStyle3, borderStyle4, borderTopStyle, borderRightStyle, borderBottomStyle, borderLeftStyle
+    , dotted, dashed, solid, double, groove, ridge, inset, outset
+    , borderColor, borderColor2, borderColor3, borderColor4, borderTopColor, borderRightColor, borderBottomColor, borderLeftColor
+    , borderRadius, borderRadius2, borderRadius3, borderRadius4, borderTopLeftRadius, borderTopLeftRadius2, borderTopRightRadius, borderTopRightRadius2, borderBottomRightRadius, borderBottomRightRadius2, borderBottomLeftRadius, borderBottomLeftRadius2
+    , borderImageOutset, borderImageOutset2, borderImageOutset3, borderImageOutset4
+    , borderImageWidth, borderImageWidth2, borderImageWidth3, borderImageWidth4
+    , display, displayFlex
+    , block, grid, inline, inlineBlock, inlineFlex, table, tableCaption, tableCell, tableColumn, tableColumnGroup, tableFooterGroup, tableHeaderGroup, tableRow, tableRowGroup
+    , position, top, right, bottom, left, zIndex
+    , absolute, relative, static, sticky
+    , padding, padding2, padding3, padding4, paddingTop, paddingRight, paddingBottom, paddingLeft
+    , margin, margin2, margin3, margin4, marginTop, marginRight, marginBottom, marginLeft
+    , boxSizing
+    , alignItems, alignSelf
+    , fontSize, xxSmall, xSmall, small, medium, large, xLarge, xxLarge, smaller, larger
+    , fontFamily, fontFamilies, serif, sansSerif, monospace, cursive, fantasy, systemUi
+    , fontStyle, italic, oblique
+    , fontWeight, bold, lighter, bolder
+    , fontVariantCaps, smallCaps, allSmallCaps, petiteCaps, allPetiteCaps, unicase, titlingCaps
+    , fontVariantLigatures, commonLigatures, noCommonLigatures, discretionaryLigatures, noDiscretionaryLigatures, historicalLigatures, noHistoricalLigatures, contextual, noContextual
+    , fontVariantNumeric, fontVariantNumeric4, ordinal, slashedZero, liningNums, oldstyleNums, proportionalNums, tabularNums, diagonalFractions, stackedFractions
+    , normal, stretch, center, start, end, flexStart, flexEnd, selfStart, selfEnd, left_, right_, top_, bottom_, baseline, firstBaseline, lastBaseline, safeCenter, unsafeCenter
+    , url
+    , cursor, pointer, default, contextMenu, help, progress, wait, cell
+    , crosshair, text, verticalText, alias, copy, move, noDrop
+    , notAllowed, allScroll, colResize, rowResize, nResize, eResize, sResize
+    , wResize, neResize, nwResize, seResize, swResize, ewResize, nsResize
+    , neswResize, nwseResize, zoomIn, zoomOut, grab, grabbing
+    , listStyle, listStyle2, listStyle3
+    , arabicIndic, armenian, bengali, cjkEarthlyBranch, cjkHeavenlyStem, devanagari, georgian, gujarati, gurmukhi, kannada, khmer, lao, malayalam, myanmar, oriya, telugu, thai
+    , auto, none
+    , hidden, visible
+    , contentBox, borderBox
+    , overflow, overflowX, overflowY
+    , overflowWrap
+    , breakWord
+    , deg, grad, rad, turn
+    , direction, ltr, rtl
+    , justify, matchParent, textAlign
+    , textOrientation
+    , mixed, sideways, upright
+    , textRendering
+    , geometricPrecision, optimizeLegibility, optimizeSpeed
+    , textTransform
+    , capitalize, uppercase, lowercase, fullWidth
+    , textDecoration, textDecoration2, textDecoration3, textDecorationLine, textDecorationLine2, textDecorationLine3, textDecorationStyle, textDecorationColor
+    , wavy, underline, overline, lineThrough
+    , borderCollapse
+    , collapse, separate
+    , borderSpacing, borderSpacing2
+    , captionSide
+    , emptyCells
+    , show, hide
+    , tableLayout
+    , verticalAlign
+    , sub, super, textTop, textBottom, middle
+    , whiteSpace
+    , pre, preWrap, preLine, nowrap
+    , wordBreak
+    , breakAll, keepAll
+    , float
+    , clear, both, inlineStart, inlineEnd
+    , visibility
+    , order
+    , fill
+    , strokeDasharray, strokeDashoffset, strokeWidth, strokeAlign, strokeColor, strokeImage, strokeMiterlimit, strokeOpacity, strokePosition, strokePosition2, strokePosition4, strokeRepeat, strokeRepeat2, strokeSize, strokeSize2, strokeDashCorner
+    , strokeLinecap, butt, square
+    , strokeBreak, boundingBox, slice, clone
+    , strokeOrigin, fillBox, strokeBox
+    , strokeLinejoin, strokeLinejoin2, crop, arcs, miter, bevel, stupid
+    , strokeDashJustify, compress, dashes, gaps
+    , columns, columns2, columnWidth, columnCount, columnGap, columnRuleWidth, columnRuleStyle, columnRuleColor, columnRule, columnRule2, columnRule3
+    , columnFill, balance, balanceAll
+    , columnSpan, all_
+    , transform
+    , matrix, matrix3d
+    , perspective
+    , rotate, rotateX, rotateY, rotateZ, rotate3d
+    , scale, scale2, scaleX, scaleY, scaleZ, scale3d
+    , skew, skew2, skewX, skewY
+    , translate, translate2, translateX, translateY, translateZ, translate3d
+    , transformStyle, preserve3d, flat
+    , opacity
+    , zoom
+    )
 
 {-| If you need something that `elm-css` does not support right now, the
 [`Css.property`](http://package.elm-lang.org/packages/rtfeldman/elm-css/latest/Css#property)
@@ -914,6 +519,11 @@ Multiple CSS properties use these values.
 @docs translate, translate2, translateX, translateY, translateZ, translate3d
 
 
+# Space Transformation
+
+@docs transformStyle, preserve3d, flat
+
+
 # Opacity
 
 @docs opacity
@@ -1056,6 +666,7 @@ inherit =
 Any CSS property can be set to this value.
 
     display initial
+
     borderStyle initial
 
 -}
@@ -1068,6 +679,7 @@ initial =
 Any CSS property can be set to this value.
 
     display unset
+
     borderStyle unset
 
 -}
@@ -1122,6 +734,7 @@ url str =
 and [`zoom`](#zoom).
 
     width auto
+
     zoom auto
 
 -}
@@ -1136,7 +749,9 @@ auto =
 and [`strokeDashJustify`](#strokeDashJustify).
 
     display none
+
     borderStyle none
+
     strokeDashJustify none
 
 -}
@@ -1148,7 +763,9 @@ none =
 {-| The `hidden` value used for properties such as [`visibility`](https://css-tricks.com/almanac/properties/v/visibility/), [`overflow`](https://css-tricks.com/almanac/properties/o/overflow/) and [`border style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).
 
     visibility hidden
+
     overflow hidden
+
     borderStyle hidden
 
 -}
@@ -1160,7 +777,9 @@ hidden =
 {-| The `visible` value used for properties such as [`visibility`](https://css-tricks.com/almanac/properties/v/visibility/), [`overflow`](https://css-tricks.com/almanac/properties/o/overflow/) and [`pointer-events`](https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events).
 
     visibility visible
+
     overflow visible
+
     pointerEvents visible
 
 -}
@@ -1172,6 +791,7 @@ visible =
 {-| The `scroll` value used for properties such as [`overflow`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow#Values) and [`background-attachment`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-attachment).
 
     overflow scroll
+
     backgroundAttachment scroll
 
 -}
@@ -1185,8 +805,11 @@ scroll =
 and [`strokeOrigin`](#strokeOrigin).
 
     boxSizing contentBox
+
     backgroundClip contentBox
+
     backgroundOrigin contentBox
+
     strokeOrigin contentBox
 
 -}
@@ -1200,8 +823,11 @@ contentBox =
 and [`strokeOrigin`](#strokeOrigin).
 
     boxSizing borderBox
+
     backgroundClip borderBox
+
     backgroundOrigin borderBox
+
     strokeOrigin borderBox
 
 -}
@@ -1217,8 +843,11 @@ borderBox =
 {-| Sets [`overflow`](https://css-tricks.com/almanac/properties/o/overflow/).
 
     overflow visible
+
     overflow hidden
+
     overflow scroll
+
     overflow auto
 
 -}
@@ -1240,8 +869,11 @@ overflow (Value val) =
 {-| Sets [`overflow-x`](https://css-tricks.com/almanac/properties/o/overflow/).
 
     overflowX visible
+
     overflowX hidden
+
     overflowX scroll
+
     overflowX auto
 
 -}
@@ -1263,8 +895,11 @@ overflowX (Value val) =
 {-| Sets [`overflow-y`](https://css-tricks.com/almanac/properties/o/overflow/).
 
     overflowY visible
+
     overflowY hidden
+
     overflowY scroll
+
     overflowY auto
 
 -}
@@ -1286,6 +921,7 @@ overflowY (Value val) =
 {-| Sets [`overflow-wrap`](https://css-tricks.com/almanac/properties/o/overflow-wrap/)
 
     overflowWrap breakWord
+
     overflowWrap normal
 
 -}
@@ -1307,6 +943,7 @@ overflowWrap (Value val) =
 and [`word-break`](https://css-tricks.com/almanac/properties/w/word-break/).
 
     overflowWrap breakWord
+
     wordBreak breakWord
 
 -}
@@ -1347,7 +984,9 @@ type alias Color =
 {-| Sets [`color`](https://css-tricks.com/almanac/properties/c/color/).
 
     color (hex "#60b5cc")
+
     color (rgb 96 181 204)
+
     color (rgba 96 181 204 0.5)
 
 -}
@@ -1372,7 +1011,9 @@ color (Value val) =
 {-| Sets [`background-color`](https://css-tricks.com/almanac/properties/b/background-color/).
 
     backgroundColor (hex "#60b5cc")
+
     backgroundColor (rgb 96 181 204)
+
     backgroundColor (rgba 96 181 204 0.5)
 
 -}
@@ -1477,6 +1118,7 @@ hsla hue saturation lightness alpha =
 You can optionally include `#` as the first character, for benefits like syntax highlighting in editors, ease of copy/pasting from tools which express these as e.g. `#abcdef0`, etc.
 
     color (hex "#60b5cc")
+
     color (hex "60b5cc")
 
 -}
@@ -1497,6 +1139,7 @@ hex str =
 {-| Sets the [`position`](https://css-tricks.com/almanac/properties/p/position/) of an element.
 
     position absolute
+
     position relative
 
 -}
@@ -1519,8 +1162,11 @@ position (Value val) =
 {-| Sets the [`top` property](https://css-tricks.com/almanac/properties/t/top/).
 
     top (px 10)
+
     top (pct 50)
+
     top auto
+
     top zero
 
 If you need to use `top` as a CSS _value_ instead of as a _property_,
@@ -1559,8 +1205,11 @@ top (Value val) =
 {-| Sets the [`bottom` property](https://css-tricks.com/almanac/properties/b/bottom/).
 
     bottom (px 10)
+
     bottom (pct 50)
+
     bottom auto
+
     bottom zero
 
 If you need to use `bottom` as a CSS _value_ instead of as a _property_,
@@ -1599,8 +1248,11 @@ bottom (Value val) =
 {-| Sets the [`left` property](https://css-tricks.com/almanac/properties/l/left/).
 
     left (px 10)
+
     left (pct 50)
+
     left auto
+
     left zero
 
 If you need to use `left` as a CSS _value_ instead of as a _property_,
@@ -1639,8 +1291,11 @@ left (Value val) =
 {-| Sets the [`right` property](https://css-tricks.com/almanac/properties/r/right).
 
     right (px 10)
+
     right (pct 50)
+
     right auto
+
     right zero
 
 If you need to use `right` as a CSS _value_ instead of as a _property_,
@@ -1693,7 +1348,9 @@ or [`fixed` `background-attachment`](https://developer.mozilla.org/en-US/docs/We
 or [`fixed` `table-layout`](https://css-tricks.com/almanac/properties/t/table-layout/)
 
     position fixed
+
     backgroundAttachment fixed
+
     tableLayout fixed
 
 The default `position` value is [`static`](#static). See also [`position: sticky`](#sticky), and [the differences between absolute, relative, and fixed positioning](https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/)
@@ -1743,6 +1400,7 @@ sticky =
 {-| Sets [`z-index`](https://css-tricks.com/almanac/properties/z/z-index/)
 
     zIndex (int 10)
+
     zIndex auto
 
 **NOTE:** Z-index is not as simple as it looks! Make sure to read about [stacking contexts](https://css-tricks.com/css-stacking-contexts/) if you're not already familiar with them.
@@ -1768,8 +1426,11 @@ zIndex (Value val) =
 {-| Sets [`padding`](https://css-tricks.com/almanac/properties/p/padding/) property.
 
     padding (em 4)
+
     padding2 (em 4) (px 2)
+
     padding3 (em 4) (px 2) (pct 5)
+
     padding4 (em 4) (px 2) (pct 5) (px 3)
 
 -}
@@ -1804,8 +1465,11 @@ padding (Value value) =
 {-| Sets [`padding`](https://css-tricks.com/almanac/properties/p/padding/) property.
 
     padding (em 4)
+
     padding2 (em 4) (px 2)
+
     padding3 (em 4) (px 2) (pct 5)
+
     padding4 (em 4) (px 2) (pct 5) (px 3)
 
 -}
@@ -1857,8 +1521,11 @@ padding2 (Value valueTopBottom) (Value valueRightLeft) =
 {-| Sets [`padding`](https://css-tricks.com/almanac/properties/p/padding/) property.
 
     padding (em 4)
+
     padding2 (em 4) (px 2)
+
     padding3 (em 4) (px 2) (pct 5)
+
     padding4 (em 4) (px 2) (pct 5) (px 3)
 
 -}
@@ -1930,8 +1597,11 @@ padding3 (Value valueTop) (Value valueRightLeft) (Value valueBottom) =
 {-| Sets [`padding`](https://css-tricks.com/almanac/properties/p/padding/) property.
 
     padding (em 4)
+
     padding2 (em 4) (px 2)
+
     padding3 (em 4) (px 2) (pct 5)
+
     padding4 (em 4) (px 2) (pct 5) (px 3)
 
 -}
@@ -2159,8 +1829,11 @@ paddingLeft (Value value) =
 {-| Sets [`margin`](https://css-tricks.com/almanac/properties/m/margin/) property.
 
     margin (em 4)
+
     margin2 (em 4) (px 2)
+
     margin3 (em 4) (px 2) (pct 5)
+
     margin4 (em 4) (px 2) (pct 5) (px 3)
 
 You may want to check out [this article on collapsing margins](https://css-tricks.com/good-ol-margin-collapsing/)!
@@ -2198,8 +1871,11 @@ margin (Value value) =
 {-| Sets [`margin`](https://css-tricks.com/almanac/properties/m/margin/) property.
 
     margin (em 4)
+
     margin2 (em 4) (px 2)
+
     margin3 (em 4) (px 2) (pct 5)
+
     margin4 (em 4) (px 2) (pct 5) (px 3)
 
 You may want to check out [this article on collapsing margins](https://css-tricks.com/good-ol-margin-collapsing/)!
@@ -2255,8 +1931,11 @@ margin2 (Value valueTopBottom) (Value valueRightLeft) =
 {-| Sets [`margin`](https://css-tricks.com/almanac/properties/m/margin/) property.
 
     margin (em 4)
+
     margin2 (em 4) (px 2)
+
     margin3 (em 4) (px 2) (pct 5)
+
     margin4 (em 4) (px 2) (pct 5) (px 3)
 
 You may want to check out [this article on collapsing margins](https://css-tricks.com/good-ol-margin-collapsing/)!
@@ -2333,8 +2012,11 @@ margin3 (Value valueTop) (Value valueRightLeft) (Value valueBottom) =
 {-| Sets [`margin`](https://css-tricks.com/almanac/properties/m/margin/) property.
 
     margin (em 4)
+
     margin2 (em 4) (px 2)
+
     margin3 (em 4) (px 2) (pct 5)
+
     margin4 (em 4) (px 2) (pct 5) (px 3)
 
 You may want to check out [this article on collapsing margins](https://css-tricks.com/good-ol-margin-collapsing/)!
@@ -2576,6 +2258,7 @@ marginLeft (Value value) =
 {-| Sets [`box-sizing`](https://css-tricks.com/almanac/properties/b/box-sizing/) property.
 
     boxSizing contentBox
+
     boxSizing borderBox
 
 -}
@@ -2863,6 +2546,7 @@ and [`order`](#order)
 which accept unitless numbers.
 
     flexGrow (num 2)
+
     order (num -2)
 
 -}
@@ -3008,7 +2692,7 @@ defaultBoxShadow =
 
 {-| Sets [`box-shadow`](https://css-tricks.com/almanac/properties/b/box-shadow/).
 
-    boxShadow  [] -- "box-shadow: none"
+    boxShadow [] -- "box-shadow: none"
 
     -- "box-shadow: 3px 5px #aabbcc"
     button
@@ -3085,9 +2769,7 @@ boxShadowConfigToString config =
     almostPct100 =
         calc (pct 100) (minus (px 2))
 
-
     -- The following compiles to: calc(100vh - (2px + 2rem))
-
     screenMinusBorderAndFooter =
         calc (vh 100) (minus (calc (px 2) (plus (rem 2))))
 
@@ -3603,8 +3285,9 @@ alignSelf (Value val) =
 
 {-| Sets [`font-size`](https://css-tricks.com/almanac/properties/f/font-size/)
 
-    fontSize  xxSmall
-    fontSize  (px 12)
+    fontSize xxSmall
+
+    fontSize (px 12)
 
 Check out [fluid typography](https://css-tricks.com/snippets/css/fluid-typography/) for some cool stuff you can do with this.
 
@@ -3681,7 +3364,9 @@ small =
 [`columnRuleWidth`](#columnRuleWidth).
 
     fontSize medium
+
     borderWidth medium
+
     columnRuleWidth medium
 
 The value is equivalent of 3px when using for `border-width`.
@@ -3714,7 +3399,7 @@ xLarge =
 
 {-| The `xx-large` [`font-size` value](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size#Values).
 
-    fontSize  xxLarge
+    fontSize xxLarge
 
 -}
 xxLarge : Value { provides | xxLarge : Supported }
@@ -3771,6 +3456,7 @@ fontFamily (Value genericFont) =
 {-| The `serif` [generic font family name](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#%3Cgeneric-name%3E).
 
     fontFamily serif
+
     fontFamilies [ "Gill Sans", "Helvetica" ] serif
 
 This can be used with [`fontFamily`](#fontFamily) and [`fontFamilies`](#fontFamilies).
@@ -3784,6 +3470,7 @@ serif =
 {-| The `sans-serif` [generic font family name](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#%3Cgeneric-name%3E).
 
     fontFamily sansSerif
+
     fontFamilies [ "Georgia", "Times" ] sansSerif
 
 This can be used with [`fontFamily`](#fontFamily) and [`fontFamilies`](#fontFamilies).
@@ -3797,6 +3484,7 @@ sansSerif =
 {-| The `monospace` [generic font family name](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#3Cgeneric-name%3E).
 
     fontFamily monospace
+
     fontFamilies [ "Source Code Pro", "Lucida Console" ] monospace
 
 This can be used with [`fontFamily`](#fontFamily) and [`fontFamilies`](#fontFamilies).
@@ -3810,6 +3498,7 @@ monospace =
 {-| The `cursive` [generic font family name](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#3Cgeneric-name%3E).
 
     fontFamily cursive
+
     fontFamilies [ "Brush Sript Std", "Lucida Calligraphy" ] cursive
 
 This can be used with [`fontFamily`](#fontFamily) and [`fontFamilies`](#fontFamilies).
@@ -3838,7 +3527,9 @@ fantasy =
 You may want to [read more about the system font stack](https://css-tricks.com/snippets/css/system-font-stack/) before using this one.
 
     fontFamily systemUi
+
     fontFamilies [ "", "Segoe UI" ] systemUi
+
     fontFamilies [ "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" ] sansSerif
 
 This can be used with [`fontFamily`](#fontFamily) and [`fontFamilies`](#fontFamilies).
@@ -3914,7 +3605,7 @@ enquoteIfNotGeneric fontName =
 
 {-| Sets [`font-style`](https://css-tricks.com/almanac/properties/f/font-style/)
 
-    fontStyle  italic
+    fontStyle italic
 
 -}
 fontStyle :
@@ -3950,8 +3641,9 @@ oblique =
 
 {-| Sets [`font-weight`](https://css-tricks.com/almanac/properties/f/font-weight/)
 
-    fontWeight  bold
-    fontWeight  (int 300)
+    fontWeight bold
+
+    fontWeight (int 300)
 
 -}
 fontWeight : Value { normal : Supported, bold : Supported, bolder : Supported, lighter : Supported } -> Style
@@ -3984,11 +3676,17 @@ bolder =
 {-| Sets [`font-variant-caps`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-caps).
 
     fontVariantCaps normal
+
     fontVariantCaps smallCaps
+
     fontVariantCaps allSmallCaps
+
     fontVariantCaps petiteCaps
+
     fontVariantCaps allPetiteCaps
+
     fontVariantCaps unicase
+
     fontVariantCaps titlingCaps
 
 -}
@@ -4019,10 +3717,15 @@ fontVariantCaps (Value str) =
 and [`alignItems`](#alignItems).
 
     alignItems normal
+
     columnGap normal
+
     fontVariantCaps normal
+
     whiteSpace normal
+
     wordBreak normal
+
     zoom normal
 
 -}
@@ -4098,6 +3801,7 @@ titlingCaps =
 {-| Sets [`font-variant-ligatures`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures).
 
     fontVariantLigatures discretionaryLigatures
+
     fontVariantLigatures none
 
 -}
@@ -4840,7 +4544,9 @@ text_ =
 Note that this takes an argument of [`color_`](#color_), not [`color`](#color)!
 
     backgroundBlendMode color_
+
     backgroundBlendMode darken
+
     backgroundBlendMode colorBurn
 
 See [`backgroundBlendModes`](#backgroundBlendModes) to set more than one `background-blend-mode` value.
@@ -4985,7 +4691,7 @@ lighten =
 
 {-| The `color-dodge` [`background-blend-mode` value](https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode#Values)
 
-    backgroundBlendMode color-colorDodge
+    backgroundBlendMode color - colorDodge
 
 -}
 colorDodge : Value { provides | colorDodge : Supported }
@@ -5093,7 +4799,9 @@ luminosity =
 Note that this takes an argument of [`text_`](#text_), not [`color`](#color)!
 
     backgroundClip text_
+
     backgroundClip paddingBox
+
     backgroundClip contentBox
 
 See [`backgroundClips`](#backgroundClips) to set more than one `background-clip` value.
@@ -5154,7 +4862,9 @@ backgroundClips firstValue values =
 and [`strokeOrigin`](#strokeOrigin).
 
     backgroundClip paddingBox
+
     backgroundOrigin paddingBox
+
     strokeOrigin paddingBox
 
 -}
@@ -5170,6 +4880,7 @@ paddingBox =
 {-| Sets [`background-origin`](https://css-tricks.com/almanac/properties/b/background-origin/).
 
     backgroundOrigin paddingBox
+
     backgroundOrigin contentBox
 
 See [`backgroundOrigins`](#backgroundOrigins) to set more than one `background-origin` value.
@@ -5539,6 +5250,7 @@ backgroundRepeat2 (Value horiz) (Value vert) =
 and [`strokeRepeat`](#strokeRepeat).
 
     backgroundRepeat repeat
+
     strokeRepeat repeat
 
 -}
@@ -5551,6 +5263,7 @@ repeat =
 and [`strokeRepeat`](#strokeRepeat).
 
     backgroundRepeat noRepeat
+
     strokeRpeat noRepeat
 
 -}
@@ -5563,6 +5276,7 @@ noRepeat =
 and [`strokeRepeat`](#strokeRepeat) horizontally.
 
     backgroundRepeat repeatX
+
     strokeRepeat repeatX
 
 -}
@@ -5575,6 +5289,7 @@ repeatX =
 and [`strokeRepeat`](#strokeRepeat) vertically.
 
     backgroundRepeat repeatY
+
     strokeRepeat repeatY
 
 -}
@@ -5587,6 +5302,7 @@ repeatY =
 and [`strokeRepeat`](#strokeRepeat) without cutting off edges by adding space.
 
     backgroundRepeat space
+
     strokeRepeat space
 
 -}
@@ -5601,8 +5317,11 @@ and [`strokeRepeat`](#strokeRepeat),
 and [`strokeLinejoin`](#strokeLinejoin2).
 
     backgroundRepeat round
+
     strokeLineCap round
+
     strokeLinejoin2 miter round
+
     strokeRepeat round
 
 -}
@@ -5618,6 +5337,7 @@ round =
 {-| Sets [`background-size`](https://css-tricks.com/almanac/properties/b/background-size/).
 
     backgroundSize cover
+
     backgroundSize (px 400)
 
 If you give a length value, it will be used for the width. The height will be set
@@ -5723,6 +5443,7 @@ for [`backgroundSize`](#backgroundSize), and [`strokeSize`](#strokeSize). It fil
 the background image by scaling, even if it cuts off some of the image.
 
     backgroundSize cover
+
     strokeSize cover
 
 -}
@@ -5820,6 +5541,7 @@ stop2 (Value color) (Value position) =
 If you want your gradient to go to a corner, use [`toBottomLeft`](#toBottomLeft) or [`toBottomRight`](#toBottomRight):
 
     linearGradient toBottomLeft (stop red) (stop blue) []
+
     linearGradient toBottomRight (stop red) (stop blue) []
 
 -}
@@ -5835,6 +5557,7 @@ toBottom =
 If you want your gradient to go to a side, use [`toBottom`](#toBottom) or [`toLeft`](#toLeft) instead:
 
     linearGradient toBottom (stop red) (stop blue) []
+
     linearGradient toLeft (stop red) (stop blue) []
 
 -}
@@ -5850,6 +5573,7 @@ toBottomLeft =
 If you want your gradient to go to a side, use [`toBottom`](#toBottom) or [`toRight`](#toRight) instead:
 
     linearGradient toBottom (stop red) (stop blue) []
+
     linearGradient toRight (stop red) (stop blue) []
 
 -}
@@ -5865,6 +5589,7 @@ toBottomRight =
 If you want your gradient to go to a corner, use [`toTopLeft`](#toTopLeft) or [`toBottomLeft`](#toBottomLeft):
 
     linearGradient toTopLeft (stop red) (stop blue) []
+
     linearGradient toBottomLeft (stop red) (stop blue) []
 
 -}
@@ -5880,6 +5605,7 @@ toLeft =
 If you want your gradient to go to a corner, use [`toTopRight`](#toTopRight) or [`toBottomRight`](#toBottomRight):
 
     linearGradient toTopRight (stop red) (stop blue) []
+
     linearGradient toBottomRight (stop red) (stop blue) []
 
 -}
@@ -5895,6 +5621,7 @@ toRight =
 If you want your gradient to go to a corner, use [`toTopLeft`](#toTopLeft) or [`toTopRight`](#toTopRight):
 
     linearGradient toTopLeft (stop red) (stop blue) []
+
     linearGradient toTopRight (stop red) (stop blue) []
 
 -}
@@ -5910,6 +5637,7 @@ toTop =
 If you want your gradient to go to a side, use [`toTop`](#toTop) or [`toLeft`](#toLeft) instead:
 
     linearGradient toTop (stop red) (stop blue) []
+
     linearGradient toLeft (stop red) (stop blue) []
 
 -}
@@ -5925,6 +5653,7 @@ toTopLeft =
 If you want your gradient to go to a side, use [`toTop`](#toTop) or [`toRight`](#toRight) instead:
 
     linearGradient toTop (stop red) (stop blue) []
+
     linearGradient toRight (stop red) (stop blue) []
 
 -}
@@ -6082,7 +5811,9 @@ listStyle3 (Value val1) (Value val2) (Value val3) =
 {-| Sets [`border`](https://css-tricks.com/almanac/properties/b/border/) property.
 
     border (px 1)
+
     border2 (px 1) solid
+
     border3 (px 1) solid (hex "#f00")
 
 -}
@@ -6119,7 +5850,9 @@ border (Value width) =
 {-| Sets [`border`](https://css-tricks.com/almanac/properties/b/border/) property.
 
     border (px 1)
+
     border2 (px 1) solid
+
     border3 (px 1) solid (hex "#f00")
 
 -}
@@ -6166,7 +5899,9 @@ border2 (Value width) (Value style) =
 {-| Sets [`border`](https://css-tricks.com/almanac/properties/b/border/) property.
 
     border (px 1)
+
     border2 (px 1) solid
+
     border3 (px 1) solid (hex "#f00")
 
 -}
@@ -6223,7 +5958,9 @@ border3 (Value width) (Value style) (Value color) =
 {-| Sets [`border-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top) property.
 
     borderTop (px 1)
+
     borderTop2 (px 1) solid
+
     borderTop3 (px 1) solid (hex "#f00")
 
 -}
@@ -6260,7 +5997,9 @@ borderTop (Value width) =
 {-| Sets [`border-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top) property.
 
     borderTop (px 1)
+
     borderTop2 (px 1) solid
+
     borderTop3 (px 1) solid (hex "#f00")
 
 -}
@@ -6307,7 +6046,9 @@ borderTop2 (Value width) (Value style) =
 {-| Sets [`border-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top) property.
 
     borderTop (px 1)
+
     borderTop2 (px 1) solid
+
     borderTop3 (px 1) solid (hex "#f00")
 
 -}
@@ -6364,7 +6105,9 @@ borderTop3 (Value width) (Value style) (Value color) =
 {-| Sets [`border-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-right) property.
 
     borderRight (px 1)
+
     borderRight2 (px 1) solid
+
     borderRight3 (px 1) solid (hex "#f00")
 
 -}
@@ -6401,7 +6144,9 @@ borderRight (Value width) =
 {-| Sets [`border-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-right) property.
 
     borderRight (px 1)
+
     borderRight2 (px 1) solid
+
     borderRight3 (px 1) solid (hex "#f00")
 
 -}
@@ -6448,7 +6193,9 @@ borderRight2 (Value width) (Value style) =
 {-| Sets [`border-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-right) property.
 
     borderRight (px 1)
+
     borderRight2 (px 1) solid
+
     borderRight3 (px 1) solid (hex "#f00")
 
 -}
@@ -6505,7 +6252,9 @@ borderRight3 (Value width) (Value style) (Value color) =
 {-| Sets [`border-bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom) property.
 
     borderBottom (px 1)
+
     borderBottom2 (px 1) solid
+
     borderBottom3 (px 1) solid (hex "#f00")
 
 -}
@@ -6542,7 +6291,9 @@ borderBottom (Value width) =
 {-| Sets [`border-bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom) property.
 
     borderBottom (px 1)
+
     borderBottom2 (px 1) solid
+
     borderBottom3 (px 1) solid (hex "#f00")
 
 -}
@@ -6589,7 +6340,9 @@ borderBottom2 (Value width) (Value style) =
 {-| Sets [`border-bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom) property.
 
     borderBottom (px 1)
+
     borderBottom2 (px 1) solid
+
     borderBottom3 (px 1) solid (hex "#f00")
 
 -}
@@ -6646,7 +6399,9 @@ borderBottom3 (Value width) (Value style) (Value color) =
 {-| Sets [`border-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-left) property.
 
     borderLeft (px 1)
+
     borderLeft2 (px 1) solid
+
     borderLeft3 (px 1) solid (hex "#f00")
 
 -}
@@ -6683,7 +6438,9 @@ borderLeft (Value width) =
 {-| Sets [`border-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-left) property.
 
     borderLeft (px 1)
+
     borderLeft2 (px 1) solid
+
     borderLeft3 (px 1) solid (hex "#f00")
 
 -}
@@ -6730,7 +6487,9 @@ borderLeft2 (Value width) (Value style) =
 {-| Sets [`border-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-left) property.
 
     borderLeft (px 1)
+
     borderLeft2 (px 1) solid
+
     borderLeft3 (px 1) solid (hex "#f00")
 
 -}
@@ -6787,8 +6546,11 @@ borderLeft3 (Value width) (Value style) (Value color) =
 {-| Sets [`border-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-width) property.
 
     borderWidth (px 1)
+
     borderWidth2 (px 1) thin
+
     borderWidth3 (px 1) thin zero
+
     borderWidth4 (px 1) thin zero (em 1)
 
 -}
@@ -6825,8 +6587,11 @@ borderWidth (Value width) =
 {-| Sets [`border-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-width) property.
 
     borderWidth (px 1)
+
     borderWidth2 (px 1) thin
+
     borderWidth3 (px 1) thin zero
+
     borderWidth4 (px 1) thin zero (em 1)
 
 -}
@@ -6882,8 +6647,11 @@ borderWidth2 (Value widthTopBottom) (Value widthRightLeft) =
 {-| Sets [`border-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-width) property.
 
     borderWidth (px 1)
+
     borderWidth2 (px 1) thin
+
     borderWidth3 (px 1) thin zero
+
     borderWidth4 (px 1) thin zero (em 1)
 
 -}
@@ -6962,8 +6730,11 @@ borderWidth3 (Value widthTop) (Value widthRightLeft) (Value widthBottom) =
 {-| Sets [`border-width`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-width) property.
 
     borderWidth (px 1)
+
     borderWidth2 (px 1) thin
+
     borderWidth3 (px 1) thin zero
+
     borderWidth4 (px 1) thin zero (em 1)
 
 -}
@@ -7203,8 +6974,11 @@ borderLeftWidth (Value width) =
 {-| Sets [`border-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style) property.
 
     borderStyle solid
+
     borderStyle2 solid none
+
     borderStyle3 solid none dotted
+
     borderStyle4 solid none dotted inherit
 
 -}
@@ -7232,8 +7006,11 @@ borderStyle (Value style) =
 {-| Sets [`border-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style) property.
 
     borderStyle solid
+
     borderStyle2 solid none
+
     borderStyle3 solid none dotted
+
     borderStyle4 solid none dotted inherit
 
 -}
@@ -7271,8 +7048,11 @@ borderStyle2 (Value styleTopBottom) (Value styleRigthLeft) =
 {-| Sets [`border-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style) property.
 
     borderStyle solid
+
     borderStyle2 solid none
+
     borderStyle3 solid none dotted
+
     borderStyle4 solid none dotted inherit
 
 -}
@@ -7323,8 +7103,11 @@ borderStyle3 (Value styleTop) (Value styleRigthLeft) (Value styleBottom) =
 {-| Sets [`border-style`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style) property.
 
     borderStyle solid
+
     borderStyle2 solid none
+
     borderStyle3 solid none dotted
+
     borderStyle4 solid none dotted inherit
 
 -}
@@ -7492,8 +7275,11 @@ borderLeftStyle (Value style) =
 {-| Sets [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color) property.
 
     borderColor (rgb 0 0 0)
+
     borderColor2 (rgb 0 0 0) (hsl 10 10 10)
+
     borderColor3 (rgb 0 0 0) (hsl 10 10 10) (hex "#fff")
+
     borderColor4 (rgb 0 0 0) (hsl 10 10 10) (hex "#fff") transparent
 
 -}
@@ -7518,8 +7304,11 @@ borderColor (Value color) =
 {-| Sets [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color) property.
 
     borderColor (rgb 0 0 0)
+
     borderColor2 (rgb 0 0 0) (hsl 10 10 10)
+
     borderColor3 (rgb 0 0 0) (hsl 10 10 10) (hex "#fff")
+
     borderColor4 (rgb 0 0 0) (hsl 10 10 10) (hex "#fff") transparent
 
 -}
@@ -7551,8 +7340,11 @@ borderColor2 (Value colorTopBottom) (Value colorRightLeft) =
 {-| Sets [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color) property.
 
     borderColor (rgb 0 0 0)
+
     borderColor2 (rgb 0 0 0) (hsl 10 10 10)
+
     borderColor3 (rgb 0 0 0) (hsl 10 10 10) (hex "#fff")
+
     borderColor4 (rgb 0 0 0) (hsl 10 10 10) (hex "#fff") transparent
 
 -}
@@ -7594,8 +7386,11 @@ borderColor3 (Value colorTop) (Value colorRightLeft) (Value colorBottom) =
 {-| Sets [`border-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-color) property.
 
     borderColor (rgb 0 0 0)
+
     borderColor2 (rgb 0 0 0) (hsl 10 10 10)
+
     borderColor3 (rgb 0 0 0) (hsl 10 10 10) (hex "#fff")
+
     borderColor4 (rgb 0 0 0) (hsl 10 10 10) (hex "#fff") transparent
 
 -}
@@ -7744,6 +7539,7 @@ borderLeftColor (Value color) =
 and [`columnRuleWidth`](#columnRuleWidth).
 
     borderWidth thin
+
     columnRuleWidth thin
 
 The value is equivalent of 1px.
@@ -7758,6 +7554,7 @@ thin =
 and [`columnRuleWidth`](#columnRuleWidth).
 
     borderWidth thick
+
     columnRuleWidth thick
 
 The value is equivalent of 5px.
@@ -7778,7 +7575,9 @@ thick =
 It represents a line that consists of dots.
 
     borderStyle dotted
+
     columnRuleStyle dotted
+
     textDecorationStyle dotted
 
 -}
@@ -7791,7 +7590,9 @@ dotted =
 [`columnRuleStyle`](#columnRuleStyle), and [`textDecorationStyle`](#textDecorationStyle).
 
     borderStyle dashed
+
     columnRuleStyle dashed
+
     textDecorationStyle dashed
 
 It represents a line that consists of dashes.
@@ -7806,7 +7607,9 @@ dashed =
 [`columnRuleStyle`](#columnRuleStyle), and [`textDecorationStyle`](#textDecorationStyle).
 
     borderStyle solid
+
     columnRuleStyle solid
+
     textDecorationStyle solid
 
 It represents a solid, continuous line.
@@ -7821,7 +7624,9 @@ solid =
 [`columnRuleStyle`](#columnRuleStyle), and [`textDecorationStyle`](#textDecorationStyle).
 
     borderStyle double
+
     columnRuleStyle double
+
     textDecorationStyle double
 
 It represents a double line: two lines side by side.
@@ -7836,7 +7641,9 @@ double =
 [`columnRuleStyle`](#columnRuleStyle), and [`textDecorationStyle`](#textDecorationStyle).
 
     borderStyle groove
+
     columnRuleStyle groove
+
     textDecorationStyle groove
 
 Adds a bevel based on the color value, which makes things appear pressed into the document.
@@ -7851,7 +7658,9 @@ groove =
 [`columnRuleStyle`](#columnRuleStyle), and [`textDecorationStyle`](#textDecorationStyle).
 
     borderStyle ridge
+
     columnRuleStyle ridge
+
     textDecorationStyle ridge
 
 Similar to [`groove`](#groove), but reverses the color values in a way that makes things appear raised.
@@ -7866,7 +7675,9 @@ ridge =
 [`columnRuleStyle`](#columnRuleStyle), and [`textDecorationStyle`](#textDecorationStyle).
 
     borderStyle inset
+
     columnRuleStyle inset
+
     textDecorationStyle inset
 
 Adds a split tone to the line that makes it appear slightly depressed.
@@ -7885,8 +7696,11 @@ and [`textDecorationStyle`](#textDecorationStyle),
 and [`strokeAlign`](#strokeAlign).
 
     borderStyle outset
+
     columnRuleStyle outset
+
     strokeAlign outset
+
     textDecorationStyle outset
 
 Similar to [`inset`](#inset), but reverses the colors in a way that makes it appear slightly raised.
@@ -7904,8 +7718,11 @@ outset =
 {-| Sets [`border-radius`](https://css-tricks.com/almanac/properties/b/border-radius/) property.
 
     borderRadius (em 4)
+
     borderRadius2 (em 4) (px 2)
+
     borderRadius3 (em 4) (px 2) (pct 5)
+
     borderRadius4 (em 4) (px 2) (pct 5) (px 3)
 
 -}
@@ -7940,8 +7757,11 @@ borderRadius (Value radius) =
 {-| Sets [`border-radius`](https://css-tricks.com/almanac/properties/b/border-radius/) property.
 
     borderRadius (em 4)
+
     borderRadius2 (em 4) (px 2)
+
     borderRadius3 (em 4) (px 2) (pct 5)
+
     borderRadius4 (em 4) (px 2) (pct 5) (px 3)
 
 -}
@@ -7993,8 +7813,11 @@ borderRadius2 (Value radiusTopLeftAndBottomRight) (Value radiusTopRightAndBottom
 {-| Sets [`border-radius`](https://css-tricks.com/almanac/properties/b/border-radius/) property.
 
     borderRadius (em 4)
+
     borderRadius2 (em 4) (px 2)
+
     borderRadius3 (em 4) (px 2) (pct 5)
+
     borderRadius4 (em 4) (px 2) (pct 5) (px 3)
 
 -}
@@ -8066,8 +7889,11 @@ borderRadius3 (Value radiusTopLeft) (Value radiusTopRightAndBottomLeft) (Value r
 {-| Sets [`border-radius`](https://css-tricks.com/almanac/properties/b/border-radius/) property.
 
     borderRadius (em 4)
+
     borderRadius2 (em 4) (px 2)
+
     borderRadius3 (em 4) (px 2) (pct 5)
+
     borderRadius4 (em 4) (px 2) (pct 5) (px 3)
 
 -}
@@ -8158,7 +7984,8 @@ borderRadius4 (Value radiusTopLeft) (Value radiusTopRight) (Value radiusBottomRi
 
 {-| Sets [`border-top-left-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius) property.
 
-    borderTopLeftRadius  (em 4)
+    borderTopLeftRadius (em 4)
+
     borderTopLeftRadius2 (em 4) (px 2)
 
 -}
@@ -8192,7 +8019,8 @@ borderTopLeftRadius (Value radius) =
 
 {-| Sets [`border-top-left-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius) property.
 
-    borderTopLeftRadius  (em 4)
+    borderTopLeftRadius (em 4)
+
     borderTopLeftRadius2 (em 4) (px 2)
 
 -}
@@ -8243,7 +8071,8 @@ borderTopLeftRadius2 (Value horizontal) (Value vertical) =
 
 {-| Sets [`border-top-right-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius) property.
 
-    borderTopRightRadius  (em 4)
+    borderTopRightRadius (em 4)
+
     borderTopRightRadius2 (em 4) (px 2)
 
 -}
@@ -8277,7 +8106,8 @@ borderTopRightRadius (Value radius) =
 
 {-| Sets [`border-top-right-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius) property.
 
-    borderTopRightRadius  (em 4)
+    borderTopRightRadius (em 4)
+
     borderTopRightRadius2 (em 4) (px 2)
 
 -}
@@ -8328,7 +8158,8 @@ borderTopRightRadius2 (Value horizontal) (Value vertical) =
 
 {-| Sets [`border-bottom-right-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius) property.
 
-    borderBottomRightRadius  (em 4)
+    borderBottomRightRadius (em 4)
+
     borderBottomRightRadius2 (em 4) (px 2)
 
 -}
@@ -8362,7 +8193,8 @@ borderBottomRightRadius (Value radius) =
 
 {-| Sets [`border-bottom-right-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius) property.
 
-    borderBottomRightRadius  (em 4)
+    borderBottomRightRadius (em 4)
+
     borderBottomRightRadius2 (em 4) (px 2)
 
 -}
@@ -8413,7 +8245,8 @@ borderBottomRightRadius2 (Value horizontal) (Value vertical) =
 
 {-| Sets [`border-bottom-left-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius) property.
 
-    borderBottomLeftRadius  (em 4)
+    borderBottomLeftRadius (em 4)
+
     borderBottomLeftRadius2 (em 4) (px 2)
 
 -}
@@ -8447,7 +8280,8 @@ borderBottomLeftRadius (Value radius) =
 
 {-| Sets [`border-bottom-left-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius) property.
 
-    borderBottomLeftRadius  (em 4)
+    borderBottomLeftRadius (em 4)
+
     borderBottomLeftRadius2 (em 4) (px 2)
 
 -}
@@ -8499,8 +8333,11 @@ borderBottomLeftRadius2 (Value horizontal) (Value vertical) =
 {-| Sets [`border-image-outset`](https://css-tricks.com/almanac/properties/b/border-image/) property.
 
     borderImageOutset (rem 1)
+
     borderImageOutset2 (num 1) (num 1.2)
+
     borderImageOutset3 (px 30) (num 2) (px 45)
+
     borderImageOutset4 (px 7) (px 12) (px 14) (px 5)
 
 Specifies the distance by which an element's border image is set out from its border box. Supports values specified as length units or unitless numbers. Negative values are invalid.
@@ -8537,8 +8374,11 @@ borderImageOutset (Value width) =
 {-| Sets [`border-image-outset`](https://css-tricks.com/almanac/properties/b/border-image/) property.
 
     borderImageOutset (rem 1)
+
     borderImageOutset2 (num 1) (num 1.2)
+
     borderImageOutset3 (px 30) (num 2) (px 45)
+
     borderImageOutset4 (px 7) (px 12) (px 14) (px 5)
 
 Specifies the distance by which an element's border image is set out from its border box. Supports values specified as length units or unitless numbers. Negative values are invalid.
@@ -8592,8 +8432,11 @@ borderImageOutset2 (Value valueTopBottom) (Value valueRightLeft) =
 {-| Sets [`border-image-outset`](https://css-tricks.com/almanac/properties/b/border-image/) property.
 
     borderImageOutset (rem 1)
+
     borderImageOutset2 (num 1) (num 1.2)
+
     borderImageOutset3 (px 30) (num 2) (px 45)
+
     borderImageOutset4 (px 7) (px 12) (px 14) (px 5)
 
 Specifies the distance by which an element's border image is set out from its border box. Supports values specified as length units or unitless numbers. Negative values are invalid.
@@ -8667,8 +8510,11 @@ borderImageOutset3 (Value valueTop) (Value valueRightLeft) (Value valueBottom) =
 {-| Sets [`border-image-outset`](https://css-tricks.com/almanac/properties/b/border-image/) property.
 
     borderImageOutset (rem 1)
+
     borderImageOutset2 (num 1) (num 1.2)
+
     borderImageOutset3 (px 30) (num 2) (px 45)
+
     borderImageOutset4 (px 7) (px 12) (px 14) (px 5)
 
 Specifies the distance by which an element's border image is set out from its border box. Supports values specified as length units or unitless numbers. Negative values are invalid.
@@ -8762,8 +8608,11 @@ borderImageOutset4 (Value valueTop) (Value valueRight) (Value valueBottom) (Valu
 {-| Sets [`border-image-width`](https://css-tricks.com/almanac/properties/b/border-image/) property.
 
     borderImageWidth (rem 1)
+
     borderImageWidth2 (num 1) (num 1.2)
+
     borderImageWidth3 (pct 5) (pct 15) (pct 10)
+
     borderImageWidth4 (px 7) (px 12) (px 14) (px 5)
 
 Specifies the width of an element's border image. Supports values specified as length units, percentages, unitless numbers or auto. Negative values are invalid.
@@ -8802,8 +8651,11 @@ borderImageWidth (Value width) =
 {-| Sets [`border-image-width`](https://css-tricks.com/almanac/properties/b/border-image/) property.
 
     borderImageWidth (rem 1)
+
     borderImageWidth2 (num 1) (num 1.2)
+
     borderImageWidth3 (pct 5) (pct 15) (pct 10)
+
     borderImageWidth4 (px 7) (px 12) (px 14) (px 5)
 
 Specifies the width of an element's border image. Supports values specified as length units, percentages, unitless numbers or auto. Negative values are invalid.
@@ -8861,8 +8713,11 @@ borderImageWidth2 (Value valueTopBottom) (Value valueRightLeft) =
 {-| Sets [`border-image-width`](https://css-tricks.com/almanac/properties/b/border-image/) property.
 
     borderImageWidth (rem 1)
+
     borderImageWidth2 (num 1) (num 1.2)
+
     borderImageWidth3 (pct 5) (pct 15) (pct 10)
+
     borderImageWidth4 (px 7) (px 12) (px 14) (px 5)
 
 Specifies the width of an element's border image. Supports values specified as length units, percentages, unitless numbers or auto. Negative values are invalid.
@@ -8942,8 +8797,11 @@ borderImageWidth3 (Value valueTop) (Value valueRightLeft) (Value valueBottom) =
 {-| Sets [`border-image-width`](https://css-tricks.com/almanac/properties/b/border-image/) property.
 
     borderImageWidth (rem 1)
+
     borderImageWidth2 (num 1) (num 1.2)
+
     borderImageWidth3 (pct 5) (pct 15) (pct 10)
+
     borderImageWidth4 (px 7) (px 12) (px 14) (px 5)
 
 Specifies the width of an element's border image. Supports values specified as length units, percentages, unitless numbers or auto. Negative values are invalid.
@@ -9049,6 +8907,7 @@ borderImageWidth4 (Value valueTop) (Value valueRight) (Value valueBottom) (Value
 {-| Sets [`text-orientation`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation).
 
     textOrientation sideways
+
     textOrientation upright
 
 -}
@@ -9103,6 +8962,7 @@ upright =
 {-| Sets [`text-rendering`](https://css-tricks.com/almanac/properties/t/text-rendering/).
 
     textRendering geometricPrecision
+
     textRendering optimizeSpeed
 
 -}
@@ -9158,6 +9018,7 @@ optimizeSpeed =
 {-| Sets [`text-transform`](https://css-tricks.com/almanac/properties/t/text-transform/).
 
     textTransform capitalize
+
     textTransform uppercase
 
 -}
@@ -9224,7 +9085,9 @@ fullWidth =
 {-| Sets [`text-decoration`][text-decoration] property.
 
     textDecoration underline
+
     textDecoration2 underline dotted
+
     textDecoration3 underline dotted (hex "#cf0")
 
 [text-decoration]: https://css-tricks.com/almanac/properties/t/text-decoration/
@@ -9248,7 +9111,9 @@ textDecoration (Value line) =
 {-| Sets [`text-decoration`][text-decoration] property.
 
     textDecoration underline
+
     textDecoration2 underline dotted
+
     textDecoration3 underline dotted (hex "#cf0")
 
 [text-decoration]: https://css-tricks.com/almanac/properties/t/text-decoration/
@@ -9277,7 +9142,9 @@ textDecoration2 (Value line) (Value style) =
 {-| Sets [`text-decoration`][text-decoration] property.
 
     textDecoration underline
+
     textDecoration2 underline dotted
+
     textDecoration3 underline dotted (hex "#cf0")
 
 [text-decoration]: https://css-tricks.com/almanac/properties/t/text-decoration/
@@ -9316,7 +9183,9 @@ textDecoration3 (Value line) (Value style) (Value color) =
 {-| Sets [`text-decoration-line`][text-decoration-line] property.
 
     textDecorationLine underline
+
     textDecorationLine2 underline overline
+
     textDecorationLine3 underline overline lineThrough
 
 [text-decoration-line]: https://css-tricks.com/almanac/properties/t/text-decoration-line/
@@ -9340,7 +9209,9 @@ textDecorationLine (Value line) =
 {-| Sets [`text-decoration-line`][text-decoration-line] property.
 
     textDecorationLine underline
+
     textDecorationLine2 underline overline
+
     textDecorationLine3 underline overline lineThrough
 
 [text-decoration-line]: https://css-tricks.com/almanac/properties/t/text-decoration-line/
@@ -9366,7 +9237,9 @@ textDecorationLine2 (Value line1) (Value line2) =
 {-| Sets [`text-decoration-line`][text-decoration-line] property.
 
     textDecorationLine underline
+
     textDecorationLine2 underline overline
+
     textDecorationLine3 underline overline lineThrough
 
 [text-decoration-line]: https://css-tricks.com/almanac/properties/t/text-decoration-line/
@@ -9555,6 +9428,7 @@ lineThrough =
 {-| Sets [`border-collapse`](https://css-tricks.com/almanac/properties/b/border-collapse/).
 
     borderCollapse collapse
+
     borderCollapse separate
 
 -}
@@ -9575,6 +9449,7 @@ borderCollapse (Value str) =
 [`visibility`](https://css-tricks.com/almanac/properties/v/visibility/) property.
 
     borderCollapse collapse
+
     visibility collapse
 
 -}
@@ -9600,6 +9475,7 @@ separate =
 {-| Sets [`border-spacing`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-spacing).
 
     borderSpacing zero
+
     borderSpacing (px 5)
 
 -}
@@ -9685,6 +9561,7 @@ borderSpacing2 (Value horizontal) (Value vertical) =
 {-| Sets [`caption-side`](https://css-tricks.com/almanac/properties/c/caption-side/).
 
     captionSide top_
+
     captionSide bottom_
 
 -}
@@ -9708,6 +9585,7 @@ captionSide (Value str) =
 {-| Sets [`empty-cells`](https://css-tricks.com/almanac/properties/e/empty-cells/).
 
     emptyCells show
+
     emptyCells hide
 
 -}
@@ -9751,6 +9629,7 @@ hide =
 {-| Sets [`table-layout`](https://css-tricks.com/almanac/properties/t/table-layout/).
 
     tableLayout auto
+
     tableLayout fixed
 
 -}
@@ -9774,6 +9653,7 @@ tableLayout (Value str) =
 {-| Sets [`vertical-align`](https://css-tricks.com/almanac/properties/v/vertical-align/).
 
     verticalAlign textBottom
+
     verticalAlign (em 1)
 
 -}
@@ -9866,6 +9746,7 @@ middle =
 {-| Sets [`direction`](https://css-tricks.com/almanac/properties/d/direction/)
 
     direction ltr
+
     direction rtl
 
 -}
@@ -9885,6 +9766,7 @@ direction (Value str) =
 {-| Sets [`text-align`](https://css-tricks.com/almanac/properties/t/text-align/)
 
     textAlign left_
+
     textAlign justfy
 
 -}
@@ -9920,6 +9802,7 @@ justify =
 and [`strokeOrigin`](#strokeOrigin) properties.
 
     textAlign matchParent
+
     strokeOrigin matchParent
 
 -}
@@ -9955,8 +9838,11 @@ rtl =
 {-| Sets [`white-space`](https://css-tricks.com/almanac/properties/w/whitespace/)
 
     whiteSpace pre
+
     whiteSpace nowrap
+
     whiteSpace preWrap
+
     whiteSpace preLine
 
 -}
@@ -10070,7 +9956,9 @@ keepAll =
 {-| Sets [`float`](https://css-tricks.com/almanac/properties/f/float/).
 
     float none
+
     float left_
+
     float right_
 
 -}
@@ -10120,6 +10008,7 @@ visibility (Value str) =
 {-| Sets [`order`](https://css-tricks.com/almanac/properties/o/order/)
 
     order (num 2)
+
     order (num -2)
 
 -}
@@ -10140,8 +10029,11 @@ order (Value val) =
 **Note:** `fill` also accepts the patterns of SVG shapes that are defined inside of a [`defs`](https://css-tricks.com/snippets/svg/svg-patterns/) element.
 
     fill (hex "#60b5cc")
+
     fill (rgb 96 181 204)
+
     fill (rgba 96 181 204 0.5)
+
     fill (url "#pattern")
 
 -}
@@ -10171,6 +10063,7 @@ fill (Value val) =
 {-| Sets [`columns`](https://css-tricks.com/almanac/properties/c/columns/)
 
     columns (px 300)
+
     columns2 (px 300) (num 2)
 
 -}
@@ -10205,6 +10098,7 @@ columns (Value width) =
 {-| Sets [`columns`](https://css-tricks.com/almanac/properties/c/columns/)
 
     columns (px 300)
+
     columns2 (px 300) (num 2)
 
 -}
@@ -10241,6 +10135,7 @@ columns2 (Value width) (Value count) =
 {-| Sets [`column-width`](https://css-tricks.com/almanac/properties/c/column-width/)
 
     columnWidth auto
+
     columnWidth (px 200)
 
 -}
@@ -10275,6 +10170,7 @@ columnWidth (Value width) =
 {-| Sets [`column-count`](https://css-tricks.com/almanac/properties/c/column-count/)
 
     columnCount auto
+
     columnCount (num 3)
 
 -}
@@ -10294,7 +10190,9 @@ columnCount (Value count) =
 {-| Sets [`column-fill`](https://css-tricks.com/almanac/properties/c/column-fill/)
 
     columnFill auto
+
     columnFill balance
+
     columnFill balanceAll
 
 -}
@@ -10335,6 +10233,7 @@ balanceAll =
 {-| Sets [`column-span`](https://css-tricks.com/almanac/properties/c/column-span/)
 
     columnSpan all_
+
     columnSpan none
 
 -}
@@ -10364,6 +10263,7 @@ all_ =
 {-| Sets [`column-gap`](https://css-tricks.com/almanac/properties/c/column-gap/)
 
     columnGap normal
+
     columnGap (px 20)
 
 -}
@@ -10398,6 +10298,7 @@ columnGap (Value width) =
 {-| Sets [`column-rule-width`](https://www.w3.org/TR/css-multicol-1/#propdef-column-rule-width)
 
     columnRuleWidth thin
+
     columnRuleWidth (px 2)
 
 -}
@@ -10434,7 +10335,9 @@ columnRuleWidth (Value width) =
 {-| Sets [`column-rule-style`](https://www.w3.org/TR/css-multicol-1/#propdef-column-rule-style)
 
     columnRuleStyle solid
+
     columnRuleStyle dotted
+
     columnRuleStyle dashed
 
 -}
@@ -10462,6 +10365,7 @@ columnRuleStyle (Value style) =
 {-| Sets [`column-rule-color`](https://www.w3.org/TR/css-multicol-1/#propdef-column-rule-color)
 
     columnRuleColor (rgb 0 0 0)
+
     columnRuleColor (hex "#fff")
 
 -}
@@ -10490,8 +10394,11 @@ columnRuleColor (Value color) =
 {-| Sets [`stroke-dasharray`](https://css-tricks.com/almanac/properties/s/stroke-dasharray/)
 
     strokeDasharray (num 2)
+
     strokeDasharray (num 2.5)
+
     strokeDasharray (em 2)
+
     strokeDasharray (pct 15)
 
 -}
@@ -10527,7 +10434,9 @@ strokeDasharray (Value val) =
 {-| Sets [`stroke-dashoffset`](https://css-tricks.com/almanac/properties/s/stroke-dashoffset/)
 
     strokeDashoffset zero
+
     strokeDashoffset (num 100)
+
     strokeDashoffset (pct 25)
 
 -}
@@ -10549,7 +10458,9 @@ strokeDashoffset (Value val) =
 {-| Sets [`stroke-linecap`](https://css-tricks.com/almanac/properties/s/stroke-linecap/)
 
     strokeLinecap butt
+
     strokeLinecap square
+
     strokeLinecap round
 
 -}
@@ -10590,10 +10501,15 @@ square =
 {-| Sets [`stroke-width`](https://css-tricks.com/almanac/properties/s/stroke-width/)
 
     strokeWidth zero
+
     strokeWidth (px 2)
+
     strokeWidth (em 2)
+
     strokeWidth (num 2)
+
     strokeWidth (num 2.5)
+
     strokeWidth (pct 15)
 
 -}
@@ -10701,6 +10617,7 @@ clone =
 {-| Sets [`stroke-color`](https://www.w3.org/TR/fill-stroke-3/#propdef-stroke-color)
 
     strokeColor (rgb 0 100 44)
+
     strokeColor (hex "#FF9E2C")
 
 -}
@@ -10725,6 +10642,7 @@ strokeColor (Value val) =
 {-| Sets [`stroke-image`](https://www.w3.org/TR/fill-stroke-3/#propdef-stroke-image)
 
     strokeImage (url "#svg-pattern")
+
     strokeImage (url "http://www.example.com/chicken.jpg")
 
 -}
@@ -10778,10 +10696,15 @@ strokeOpacity (Value val) =
 {-| Sets [`stroke-origin`](https://www.w3.org/TR/fill-stroke-3/#propdef-stroke-origin)
 
     strokeOrign matchParent
+
     strokeOrign fillBox
+
     strokeOrign strokeBox
+
     strokeOrign contentBox
+
     strokeOrign paddingBox
+
     strokeOrign borderBox
 
 -}
@@ -11167,7 +11090,9 @@ strokeSize2 (Value width) (Value height) =
 {-| Sets [`stroke-dash-corner`](https://www.w3.org/TR/fill-stroke-3/#propdef-stroke-dash-corner).
 
     strokeDashCorner none
+
     strokeDashCorner (px 10)
+
     strokeDashCorner (em 5)
 
 -}
@@ -11203,7 +11128,9 @@ strokeDashCorner (Value size) =
 {-| Sets [`stroke-linejoin`](https://www.w3.org/TR/fill-stroke-3/#propdef-stroke-linejoin).
 
     strokeLinejoin crop
+
     strokeLinejoin arcs
+
     strokeLinejoin miter
 
 **Note:** if you only want to specifiy the rendering of the cap of a corner you need to use [`strokeLinejoin2`](#strokeLinejoin2)
@@ -11227,7 +11154,9 @@ strokeLinejoin (Value val) =
 {-| Sets [`stroke-linejoin`](https://www.w3.org/TR/fill-stroke-3/#propdef-stroke-linejoin).
 
     strokeLinejoin crop bevel
+
     strokeLinejoin arcs round
+
     strokeLinejoin miter stupid
 
 -}
@@ -11359,7 +11288,9 @@ This is a shorthand for the [`columnRuleWidth`](#columnRuleWidth),
 properties.
 
     columnRule thin
+
     columnRule2 thin solid
+
     columnRule3 thin solid (hex "#000000")
 
 -}
@@ -11399,7 +11330,9 @@ This is a shorthand for the [`columnRuleWidth`](#columnRuleWidth),
 properties.
 
     columnRule thin
+
     columnRule2 thin solid
+
     columnRule3 thin solid (hex "#000000")
 
 -}
@@ -11449,7 +11382,9 @@ This is a shorthand for the [`columnRuleWidth`](#columnRuleWidth),
 properties.
 
     columnRule thin
+
     columnRule2 thin solid
+
     columnRule3 thin solid (hex "#000000")
 
 -}
@@ -12214,10 +12149,15 @@ perspective (Value length) =
 {-| Sets [`clear`](https://css-tricks.com/almanac/properties/c/clear/) property.
 
     clear none
+
     clear both
+
     clear left_
+
     clear right_
+
     clear inlineStart
+
     clear inlineEnd
 
 -}
@@ -12271,7 +12211,9 @@ inlineEnd =
 {-| Sets [`opacity`](https://css-tricks.com/almanac/properties/o/opacity/)
 
     opacity (num 0.5)
+
     opacity (num 1.0)
+
     opacity zero
 
 -}
@@ -12292,7 +12234,9 @@ opacity (Value val) =
 {-| Sets [`zoom`](https://css-tricks.com/almanac/properties/z/zoom/)
 
     zoom (pct 150)
+
     zoom (num 1.5)
+
     zoom normal
 
 -}
@@ -12311,3 +12255,43 @@ zoom :
     -> Style
 zoom (Value val) =
     AppendProperty ("zoom:" ++ val)
+
+
+{-| Sets [`transform-style`](https://css-tricks.com/almanac/properties/t/transform-style/)
+
+    transformStyle preserve3d
+
+    transformStyle flat
+
+-}
+transformStyle :
+    Value
+        { preserve3d : Supported
+        , flat : Supported
+        , inherit : Supported
+        , initial : Supported
+        , unset : Supported
+        }
+    -> Style
+transformStyle (Value val) =
+    AppendProperty ("transform-style:" ++ val)
+
+
+{-| Sets `preserve-3d` value for usage with [`transformStyle`](#transformStyle).
+
+    transformStyle preserve3d
+
+-}
+preserve3d : Value { provides | preserve3d : Supported }
+preserve3d =
+    Value "preserve-3d"
+
+
+{-| Sets `flat` value for usage with [`transformStyle`](#transformStyle).
+
+    transformStyle flat
+
+-}
+flat : Value { provides | flat : Supported }
+flat =
+    Value "flat"
